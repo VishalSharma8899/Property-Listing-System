@@ -34,11 +34,11 @@ export const userRegister = async (req, res, next) => {
   }
 };
 
-export const login = async(req, res) => {
+export const login = async (req, res) => {
   const { email, password } = req.body;
- 
+
   const check = await User.findOne({ email: email });
-console.log(check);
+  console.log(check);
   if (!check) {
     return res.status(404).json({
       msg: "user not found",
@@ -59,8 +59,8 @@ console.log(check);
 };
 
 const generateToken = (userid) => {
-    const key = process.env.JWT_SECRET_KEY;
- 
+  const key = process.env.JWT_SECRET_KEY;
+
   return jwt.sign({ userid }, `${key}`, {
     expiresIn: 86400,
   });
