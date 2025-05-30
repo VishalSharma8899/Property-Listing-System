@@ -1,4 +1,5 @@
-import properties from "../models/propertiesModel.js";
+ import properties from "../models/propertiesModel.js";
+import redisClient from "../config/redisClient.js"; 
 
 export const propertiesSearch = async (req, res) => {
   try {
@@ -28,7 +29,23 @@ export const propertiesSearch = async (req, res) => {
       if (data.minArea) filter.areaSqFt.$gte = +data.minArea;
       if (data.maxArea) filter.areaSqFt.$lte = +data.maxArea;
     }
+
+   
+    const redisKey = `propertiesSearch:${JSON.stringify(filter)}`;
+
+     
+    const cachedResults = await redisClient.get(redisKey);
+    if (cachedResults) {
+      console.log("Cache hit for properties search");
+      return res.status(200).json(JSON.parse(cachedResults));
+    }
+
+    console.log("Cache miss for properties search, querying DB");
     const Properties = await properties.find(filter);
+
+  
+    await redisClient.setEx(redisKey, 120, JSON.stringify(Properties));
+
     res.status(200).json(Properties);
   } catch (error) {
     console.error("Search error:", error);

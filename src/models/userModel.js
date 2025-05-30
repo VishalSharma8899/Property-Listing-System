@@ -21,6 +21,14 @@ const userSchema = new Schema({
       ref: "properties",
     },
   ],
+  recommendationsReceived: [
+  {
+     propertyId: { type: mongoose.Schema.Types.ObjectId, ref: 'properties' },
+      recommendedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+      recommendedAt: { type: Date, default: Date.now },
+  }
+]
+
 });
 
 export const User = mongoose.model("user", userSchema);
