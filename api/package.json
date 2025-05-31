@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start",
+    "dev": "nodemon server.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VishalSharma8899/Property-Listing-System.git"
+  },
+  "author": "vishal sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VishalSharma8899/Property-Listing-System/issues"
+  },
+  "homepage": "https://github.com/VishalSharma8899/Property-Listing-System#readme",
+  "dependencies": {
+    "backend": "file:",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.1",
+    "password-hash": "^1.2.2",
+    "redis": "^5.1.1",
+    "serverless-http": "^3.2.0"
+  }
+}
