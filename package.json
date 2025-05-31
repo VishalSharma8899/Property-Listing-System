@@ -26,6 +26,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
     "password-hash": "^1.2.2",
-    "redis": "^5.1.1"
+    "redis": "^5.1.1",
+    "serverless-http": "^3.2.0"
   }
 }

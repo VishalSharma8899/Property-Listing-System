@@ -36,7 +36,7 @@ export const getproperties = async (req, res) => {
   try {
   
     const cachedData = await redisClient.get("all_properties");
-
+    console.log(cachedData)
     if (cachedData) {
        console.log("✅ Data served from Redis cache");
       return res.status(200).json(JSON.parse(cachedData));
